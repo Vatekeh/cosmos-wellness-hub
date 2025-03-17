@@ -15,6 +15,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
+// Sample data for mood chart
 const moodData = [
   { date: "Mon", mood: 6, energy: 7 },
   { date: "Tue", mood: 8, energy: 6 },
@@ -25,6 +26,7 @@ const moodData = [
   { date: "Sun", mood: 7, energy: 6 },
 ];
 
+// Sample timeline activity data
 const timelineData = [
   {
     title: "Today",
@@ -80,6 +82,7 @@ const timelineData = [
   }
 ];
 
+// Sample AI chat messages
 const initialMessages = [
   { 
     id: 1, 
@@ -101,6 +104,7 @@ const initialMessages = [
   }
 ];
 
+// Available moods for selection
 const moodOptions = [
   { emoji: "😊", label: "Happy", color: "bg-yellow-400 hover:bg-yellow-300" },
   { emoji: "😌", label: "Calm", color: "bg-blue-400 hover:bg-blue-300" },
@@ -131,6 +135,7 @@ const Dashboard = () => {
       setMessages([...messages, newMessage]);
       setCurrentMessage('');
       
+      // Simulate AI response after a short delay
       setTimeout(() => {
         const aiResponse = {
           id: messages.length + 2,
@@ -144,12 +149,18 @@ const Dashboard = () => {
   };
 
   const saveMoodEntry = () => {
+    // Here you would save the mood entry to your database
+    // For now, we'll just close the dialog and show a toast message
     setMoodDialogOpen(false);
+    // Reset mood note for next entry
     setMoodNote('');
+    // You could add a toast notification here to confirm the entry was saved
   };
 
   const toggleVoiceMode = () => {
     setVoiceMode(!voiceMode);
+    // Here you would implement voice recognition functionality
+    // For now, this just toggles the button state
   };
 
   return (
@@ -157,6 +168,7 @@ const Dashboard = () => {
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
       
       <div className="cosmos-container relative z-10">
+        {/* Header with greeting */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pt-4">
           <div>
             <h1 className="text-2xl md:text-4xl font-serif font-bold">
@@ -167,6 +179,7 @@ const Dashboard = () => {
             </p>
           </div>
           
+          {/* Mood selector in a dropdown/popover */}
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="mt-4 md:mt-0 flex items-center gap-2">
@@ -206,6 +219,7 @@ const Dashboard = () => {
           </Popover>
         </div>
         
+        {/* Mood entry dialog */}
         <Dialog open={moodDialogOpen} onOpenChange={setMoodDialogOpen}>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -244,7 +258,9 @@ const Dashboard = () => {
           </DialogContent>
         </Dialog>
         
+        {/* Main bento grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* AI Chat Companion */}
           <Card className="glass-panel col-span-1 lg:col-span-2 overflow-hidden flex flex-col">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center">
@@ -292,7 +308,9 @@ const Dashboard = () => {
             </CardContent>
           </Card>
           
+          {/* Right side panels */}
           <div className="col-span-1 space-y-6">
+            {/* Wellness Overview */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -308,32 +326,35 @@ const Dashboard = () => {
                     energy: { label: "Energy", color: "#4ECDC4" }
                   }}
                 >
-                  <AreaChart data={moodData}>
-                    <defs>
-                      <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0}/>
-                      </linearGradient>
-                      <linearGradient id="colorEnergy" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="date" stroke="#888" fontSize={12} />
-                    <YAxis stroke="#888" fontSize={12} />
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Area type="monotone" dataKey="mood" stroke="#FF6B6B" fillOpacity={1} fill="url(#colorMood)" />
-                    <Area type="monotone" dataKey="energy" stroke="#4ECDC4" fillOpacity={1} fill="url(#colorEnergy)" />
-                  </AreaChart>
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={moodData}>
+                      <defs>
+                        <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorEnergy" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                      <XAxis dataKey="date" stroke="#888" fontSize={12} />
+                      <YAxis stroke="#888" fontSize={12} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Area type="monotone" dataKey="mood" stroke="#FF6B6B" fillOpacity={1} fill="url(#colorMood)" />
+                      <Area type="monotone" dataKey="energy" stroke="#4ECDC4" fillOpacity={1} fill="url(#colorEnergy)" />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                  <ChartLegend className="mt-2" />
                 </ChartContainer>
-                <ChartLegend className="mt-2" />
                 <div className="mt-4 text-sm text-white/70">
                   <p>Recent insight: You tend to have higher energy levels on weekends</p>
                 </div>
               </CardContent>
             </Card>
             
+            {/* Journal Options */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -371,6 +392,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
             
+            {/* Today's Meditation */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -393,6 +415,7 @@ const Dashboard = () => {
           </div>
         </div>
         
+        {/* Activity Timeline Section */}
         <div className="mt-12">
           <h2 className="text-xl md:text-2xl font-serif font-bold mb-6">Your Activity Timeline</h2>
           <Timeline data={timelineData} />
@@ -402,6 +425,7 @@ const Dashboard = () => {
   );
 };
 
+// Mock Chart component for the example
 const Chart = ({ className }: { className?: string }) => {
   return <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3 3V21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
