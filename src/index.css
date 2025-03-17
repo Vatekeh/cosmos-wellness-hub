@@ -49,6 +49,11 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
+  
+  /* Make sure text is always visible against backgrounds */
+  p, span, div {
+    @apply text-white;
+  }
 }
 
 @layer components {

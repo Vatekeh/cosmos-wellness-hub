@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book, Calendar, FileText } from 'lucide-react';
+import DisplayCards from "@/components/ui/display-cards";
+import { Book, Calendar, FileText, Sparkles } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 // Sample data for past entries
@@ -65,11 +66,40 @@ const formatDate = (dateString: string) => {
   });
 };
 
+// Map the entries data to the DisplayCard format
+const mapEntriesToDisplayCards = () => {
+  return pastEntriesData.map(entry => ({
+    icon: getEntryIcon(entry.type),
+    title: entry.title,
+    description: entry.excerpt,
+    date: formatDate(entry.date),
+    iconClassName: "text-cosmos-coral",
+    titleClassName: "text-white",
+    className: "bg-cosmos-midnight/50 border-white/10 hover:border-cosmos-coral/30 h-40 w-full md:w-[22rem] mb-6"
+  }));
+};
+
 export interface PastEntriesProps {
   className?: string;
 }
 
 const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
+  const entryCards = mapEntriesToDisplayCards();
+  
+  // Add a "View All Entries" card
+  const allCards = [
+    ...entryCards,
+    {
+      icon: <Sparkles className="h-5 w-5 text-cosmos-coral" />,
+      title: "View All Entries",
+      description: "",
+      date: "",
+      iconClassName: "text-cosmos-coral",
+      titleClassName: "text-white",
+      className: "bg-cosmos-midnight/50 border-white/10 hover:border-cosmos-coral/30 h-24 w-full md:w-[22rem] flex justify-center items-center"
+    }
+  ];
+  
   return (
     <Card className={cn("glass-panel", className)}>
       <CardHeader className="pb-2">
@@ -79,35 +109,13 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          {pastEntriesData.map((entry) => (
-            <Card 
-              key={entry.id} 
-              className="bg-white/5 hover:bg-white/10 transition-colors cursor-pointer p-4"
-            >
-              <div className="flex items-start gap-3">
-                <div className="mt-1">
-                  {getEntryIcon(entry.type)}
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium">{entry.title}</h4>
-                    <span className="text-xs text-white/70">{formatDate(entry.date)}</span>
-                  </div>
-                  <div className="flex items-center mb-2">
-                    <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">
-                      {entry.mood}
-                    </span>
-                  </div>
-                  <p className="text-sm text-white/80 line-clamp-2">{entry.excerpt}</p>
-                </div>
-              </div>
-            </Card>
+        <div className="flex flex-col items-center">
+          {allCards.map((cardProps, index) => (
+            <DisplayCard 
+              key={index}
+              {...cardProps}
+            />
           ))}
-          
-          <Card className="bg-white/5 hover:bg-white/10 transition-colors cursor-pointer p-4 flex justify-center items-center">
-            <span className="text-white/70 text-sm">View All Entries</span>
-          </Card>
         </div>
       </CardContent>
     </Card>
