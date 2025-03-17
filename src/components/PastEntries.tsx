@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import DisplayCards from "@/components/ui/display-cards";
+import DisplayCards, { DisplayCard } from "@/components/ui/display-cards";
 import { Book, Calendar, FileText, Sparkles } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
