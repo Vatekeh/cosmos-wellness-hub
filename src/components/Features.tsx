@@ -94,7 +94,8 @@ const Features: React.FC = () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    document.querySelectorAll('.feature-card').forEach((card) => {
+    const cards = document.querySelectorAll('.feature-card');
+    cards.forEach((card) => {
       observer.observe(card);
     });
 
