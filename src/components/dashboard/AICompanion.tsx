@@ -12,7 +12,7 @@ interface Message {
   timestamp: string;
 }
 
-const initialMessages = [
+const initialMessages: Message[] = [
   { 
     id: 1, 
     sender: 'ai', 
@@ -40,9 +40,9 @@ const AICompanion: React.FC = () => {
 
   const sendMessage = () => {
     if (currentMessage.trim()) {
-      const newMessage = {
+      const newMessage: Message = {
         id: messages.length + 1,
-        sender: 'user' as const,
+        sender: 'user',
         text: currentMessage,
         timestamp: new Date().toISOString()
       };
@@ -51,9 +51,9 @@ const AICompanion: React.FC = () => {
       setCurrentMessage('');
       
       setTimeout(() => {
-        const aiResponse = {
+        const aiResponse: Message = {
           id: messages.length + 2,
-          sender: 'ai' as const,
+          sender: 'ai',
           text: "Thanks for sharing! I've noted this in your activity log. Would you like to explore a short mindfulness exercise based on your current mood?",
           timestamp: new Date().toISOString()
         };
