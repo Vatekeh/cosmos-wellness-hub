@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ChartContainer, ChartLegend, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from "recharts";
@@ -7,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles, MessageCircle, Calendar, Sun, Moon, Brain, Heart, Wind, Book, Clock, Plus } from 'lucide-react';
+import { 
+  Sparkles, MessageCircle, Calendar, Sun, Moon, Brain, 
+  Heart, Wind, Book, Clock, Plus, Mic, MicOff, Save 
+} from 'lucide-react';
 import { Timeline } from "@/components/ui/timeline";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 // Sample data for mood chart
 const moodData = [
@@ -99,10 +104,24 @@ const initialMessages = [
   }
 ];
 
+// Available moods for selection
+const moodOptions = [
+  { emoji: "😊", label: "Happy", color: "bg-yellow-400 hover:bg-yellow-300" },
+  { emoji: "😌", label: "Calm", color: "bg-blue-400 hover:bg-blue-300" },
+  { emoji: "😔", label: "Sad", color: "bg-red-400 hover:bg-red-300" },
+  { emoji: "😴", label: "Tired", color: "bg-purple-400 hover:bg-purple-300" },
+  { emoji: "😰", label: "Anxious", color: "bg-green-400 hover:bg-green-300" },
+  { emoji: "😡", label: "Angry", color: "bg-orange-400 hover:bg-orange-300" },
+];
+
 const Dashboard = () => {
   const [messages, setMessages] = useState(initialMessages);
   const [currentMessage, setCurrentMessage] = useState('');
   const [activeTab, setActiveTab] = useState('chat');
+  const [voiceMode, setVoiceMode] = useState(false);
+  const [selectedMood, setSelectedMood] = useState(null);
+  const [moodNote, setMoodNote] = useState('');
+  const [moodDialogOpen, setMoodDialogOpen] = useState(false);
   
   const sendMessage = () => {
     if (currentMessage.trim()) {
@@ -129,12 +148,27 @@ const Dashboard = () => {
     }
   };
 
+  const saveMoodEntry = () => {
+    // Here you would save the mood entry to your database
+    // For now, we'll just close the dialog and show a toast message
+    setMoodDialogOpen(false);
+    // Reset mood note for next entry
+    setMoodNote('');
+    // You could add a toast notification here to confirm the entry was saved
+  };
+
+  const toggleVoiceMode = () => {
+    setVoiceMode(!voiceMode);
+    // Here you would implement voice recognition functionality
+    // For now, this just toggles the button state
+  };
+
   return (
     <div className="min-h-screen pt-20 pb-10">
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
       
       <div className="cosmos-container relative z-10">
-        {/* Header with greeting and mood selector */}
+        {/* Header with greeting */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pt-4">
           <div>
             <h1 className="text-2xl md:text-4xl font-serif font-bold">
@@ -144,21 +178,85 @@ const Dashboard = () => {
               How are you feeling today?
             </p>
           </div>
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <button className="h-10 w-10 rounded-full bg-yellow-400 hover:bg-yellow-300 transition-colors flex items-center justify-center text-xl">
-              😊
-            </button>
-            <button className="h-10 w-10 rounded-full bg-blue-400 hover:bg-blue-300 transition-colors flex items-center justify-center text-xl">
-              😌
-            </button>
-            <button className="h-10 w-10 rounded-full bg-red-400 hover:bg-red-300 transition-colors flex items-center justify-center text-xl">
-              😔
-            </button>
-            <button className="h-10 w-10 rounded-full bg-purple-400 hover:bg-purple-300 transition-colors flex items-center justify-center text-xl">
-              😴
-            </button>
-          </div>
+          
+          {/* Mood selector in a dropdown/popover */}
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="mt-4 md:mt-0 flex items-center gap-2">
+                {selectedMood ? (
+                  <>
+                    <span className="text-xl">{selectedMood.emoji}</span>
+                    <span>{selectedMood.label}</span>
+                  </>
+                ) : (
+                  <>
+                    <Heart className="h-4 w-4" />
+                    <span>Select Mood</span>
+                  </>
+                )}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-72">
+              <div className="space-y-4">
+                <h4 className="font-medium">How are you feeling?</h4>
+                <div className="grid grid-cols-3 gap-2">
+                  {moodOptions.map((mood) => (
+                    <button
+                      key={mood.label}
+                      onClick={() => {
+                        setSelectedMood(mood);
+                        setMoodDialogOpen(true);
+                      }}
+                      className={`${mood.color} h-12 w-full rounded-md transition-colors flex flex-col items-center justify-center`}
+                    >
+                      <span className="text-xl">{mood.emoji}</span>
+                      <span className="text-xs">{mood.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
+        
+        {/* Mood entry dialog */}
+        <Dialog open={moodDialogOpen} onOpenChange={setMoodDialogOpen}>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>
+                {selectedMood ? (
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">{selectedMood.emoji}</span>
+                    <span>I'm feeling {selectedMood.label}</span>
+                  </div>
+                ) : (
+                  "Record your mood"
+                )}
+              </DialogTitle>
+              <DialogDescription>
+                Add some notes about why you're feeling this way
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="mood-note">Notes (optional)</Label>
+                <Input
+                  id="mood-note"
+                  placeholder="What's making you feel this way?"
+                  value={moodNote}
+                  onChange={(e) => setMoodNote(e.target.value)}
+                  className="col-span-3"
+                />
+              </div>
+            </div>
+            <DialogFooter>
+              <Button onClick={saveMoodEntry} className="w-full">
+                <Save className="mr-2 h-4 w-4" />
+                Save Entry
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
         
         {/* Main bento grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -195,12 +293,16 @@ const Dashboard = () => {
               </div>
               <div className="flex gap-2">
                 <Input 
-                  placeholder="Type your message..." 
+                  placeholder={voiceMode ? "Listening..." : "Type your message..."} 
                   value={currentMessage}
                   onChange={(e) => setCurrentMessage(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                   className="bg-white/5"
+                  disabled={voiceMode}
                 />
+                <Button onClick={toggleVoiceMode} variant="outline" className="px-3">
+                  {voiceMode ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                </Button>
                 <Button onClick={sendMessage}>Send</Button>
               </div>
             </CardContent>
@@ -224,7 +326,6 @@ const Dashboard = () => {
                     energy: { label: "Energy", color: "#4ECDC4" }
                   }}
                 >
-                  {/* Wrap all chart elements in a single ResponsiveContainer to fix the TypeScript error */}
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={moodData}>
                       <defs>
