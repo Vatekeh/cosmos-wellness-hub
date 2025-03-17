@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon } from 'lucide-react';
+import { Menu, X, Moon, LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -34,9 +34,12 @@ const Navbar: React.FC = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#features" className="cosmos-link text-white/90 hover:text-white">Features</a>
           <a href="#benefits" className="cosmos-link text-white/90 hover:text-white">Benefits</a>
-          <a href="#testimonials" className="cosmos-link text-white/90 hover:text-white">Testimonials</a>
+          <a href="#research" className="cosmos-link text-white/90 hover:text-white">Research</a>
           <Link to="/pricing" className="cosmos-link text-white/90 hover:text-white">Pricing</Link>
-          <a href="#download" className="cosmos-button-primary ml-2">Download App</a>
+          <Link to="/dashboard" className="cosmos-button-primary ml-2 flex items-center gap-2">
+            <LogIn className="w-4 h-4" />
+            <span>Login</span>
+          </Link>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -55,9 +58,12 @@ const Navbar: React.FC = () => {
           <div className="py-8 px-4 flex flex-col gap-6 text-center">
             <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Features</a>
             <a href="#benefits" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Benefits</a>
-            <a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Testimonials</a>
+            <a href="#research" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Research</a>
             <Link to="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Pricing</Link>
-            <a href="#download" onClick={() => setIsMobileMenuOpen(false)} className="cosmos-button-primary mt-4 w-full flex justify-center">Download App</a>
+            <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="cosmos-button-primary mt-4 w-full flex justify-center items-center gap-2">
+              <LogIn className="w-4 h-4" />
+              <span>Login</span>
+            </Link>
           </div>
         </div>
       )}
