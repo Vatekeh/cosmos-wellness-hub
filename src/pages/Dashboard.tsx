@@ -347,8 +347,8 @@ const Dashboard = () => {
                       <Area type="monotone" dataKey="energy" stroke="#4ECDC4" fillOpacity={1} fill="url(#colorEnergy)" />
                     </AreaChart>
                   </ResponsiveContainer>
-                  <ChartLegend className="mt-2" />
                 </ChartContainer>
+                <ChartLegend className="mt-2" />
                 <div className="mt-4 text-sm text-white/70">
                   <p>Recent insight: You tend to have higher energy levels on weekends</p>
                 </div>
