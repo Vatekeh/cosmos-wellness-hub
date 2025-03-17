@@ -40,7 +40,7 @@ const FAQ: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-serif font-bold mb-4">
             Frequently Asked <span className="cosmos-gradient-text">Questions</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-white/70">
+          <p className="max-w-2xl mx-auto text-white opacity-70">
             Find answers to common questions about our pricing plans and services.
           </p>
         </div>
@@ -50,7 +50,7 @@ const FAQ: React.FC = () => {
             {faqItems.map((item, index) => (
               <div key={index} className="glass-panel p-6">
                 <h3 className="text-xl font-semibold mb-2">{item.question}</h3>
-                <p className="text-white/70">{item.answer}</p>
+                <p className="text-white opacity-70">{item.answer}</p>
               </div>
             ))}
           </div>

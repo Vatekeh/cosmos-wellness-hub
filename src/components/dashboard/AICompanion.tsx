@@ -73,7 +73,7 @@ const AICompanion: React.FC = () => {
           <Sparkles className="h-5 w-5 mr-2 text-cosmos-coral" />
           AI Companion
         </CardTitle>
-        <CardDescription className="text-white/70">Your personal wellness assistant</CardDescription>
+        <CardDescription className="text-white opacity-70">Your personal wellness assistant</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow overflow-hidden flex flex-col">
         <div className="flex-grow overflow-y-auto mb-4 space-y-4 p-2">

@@ -19,7 +19,7 @@ const TodaysMeditation: React.FC = () => {
           </div>
           <div>
             <h4 className="font-medium">Calm Clarity</h4>
-            <p className="text-sm text-white/70">10 min guided meditation</p>
+            <p className="text-sm text-white opacity-70">10 min guided meditation</p>
           </div>
         </div>
       </CardContent>

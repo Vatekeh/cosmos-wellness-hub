@@ -64,7 +64,7 @@ const WellnessOverview: React.FC = () => {
           </ResponsiveContainer>
         </ChartContainer>
         <ChartLegend className="mt-2" />
-        <div className="mt-4 text-sm text-white/70">
+        <div className="mt-4 text-sm text-white opacity-70">
           <p>Recent insight: You tend to have higher energy levels on weekends</p>
         </div>
       </CardContent>

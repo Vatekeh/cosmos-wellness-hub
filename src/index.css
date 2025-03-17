@@ -150,7 +150,8 @@
   min-width: 1200px;
 }
 
-/* Fix for text on white backgrounds */
+/* Text color handling for different backgrounds */
+/* Light backgrounds (explicit) */
 .bg-white, 
 .bg-white\/90, 
 .bg-white\/80, 
@@ -158,12 +159,14 @@
 .bg-white\/50, 
 .bg-white\/40, 
 .bg-white\/30, 
-.bg-white\/20, 
+.bg-white\/20,
+.bg-white\/10,
+.bg-white\/5,
 [class*="bg-white"] {
   @apply text-black;
 }
 
-/* Apply black text to all UI card components with white or light backgrounds */
+/* Common UI components with light backgrounds */
 .bg-card, 
 .bg-background, 
 .bg-muted,
@@ -172,21 +175,29 @@
   @apply text-black;
 }
 
-/* Override specific components with dark backgrounds that need white text */
+/* Dark backgrounds that need white text */
 .glass-panel, 
 .bg-cosmos-midnight, 
 .bg-cosmos-deepPurple, 
+.bg-cosmos-purple,
 .bg-cosmos-coral,
-.bg-cosmos-coral\/5,
-.bg-cosmos-coral\/10,
-.bg-cosmos-coral\/20,
-.bg-white\/5, 
-.bg-white\/10, 
-.bg-white\/20 {
+.bg-cosmos-coral\/80,
+.bg-cosmos-coral\/70,
+.bg-cosmos-coral\/60,
+.bg-cosmos-coral\/50,
+.bg-cosmos-coral\/40,
+.bg-cosmos-coral\/30 {
   @apply text-white;
 }
 
-/* Card component text colors - inherit text color from parent */
+/* Very light backgrounds for cosmos-coral */
+.bg-cosmos-coral\/5,
+.bg-cosmos-coral\/10,
+.bg-cosmos-coral\/20 {
+  @apply text-black;
+}
+
+/* Card component text colors */
 .card-title {
   @apply text-current;
 }
