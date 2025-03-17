@@ -140,3 +140,17 @@
   height: auto;
   min-width: 1200px;
 }
+
+/* Fix for text on white backgrounds */
+.bg-white, .bg-white\/90, .bg-white\/80, .bg-white\/70, [class*="bg-white"] {
+  @apply text-black;
+}
+
+.bg-card, .bg-background, .bg-muted {
+  @apply text-black;
+}
+
+/* Override specific components with white backgrounds but need white text */
+.glass-panel, .bg-cosmos-midnight, .bg-cosmos-deepPurple, .bg-white\/5, .bg-white\/10, .bg-white\/20 {
+  @apply text-white;
+}

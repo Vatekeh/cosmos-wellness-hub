@@ -69,11 +69,11 @@ const AICompanion: React.FC = () => {
   return (
     <Card className="glass-panel col-span-1 lg:col-span-2 overflow-hidden flex flex-col">
       <CardHeader className="pb-4">
-        <CardTitle className="flex items-center">
+        <CardTitle className="flex items-center text-white">
           <Sparkles className="h-5 w-5 mr-2 text-cosmos-coral" />
           AI Companion
         </CardTitle>
-        <CardDescription>Your personal wellness assistant</CardDescription>
+        <CardDescription className="text-white/70">Your personal wellness assistant</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow overflow-hidden flex flex-col">
         <div className="flex-grow overflow-y-auto mb-4 space-y-4 p-2">
@@ -109,7 +109,7 @@ const AICompanion: React.FC = () => {
           <Button onClick={toggleVoiceMode} variant="outline" className="px-3 text-white border-white/20">
             {voiceMode ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
           </Button>
-          <Button onClick={sendMessage}>Send</Button>
+          <Button onClick={sendMessage} className="text-white">Send</Button>
         </div>
       </CardContent>
     </Card>
