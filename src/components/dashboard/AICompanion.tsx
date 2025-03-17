@@ -103,10 +103,10 @@ const AICompanion: React.FC = () => {
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-            className="bg-white/5 text-white placeholder:text-white/50"
+            className="bg-white/5"
             disabled={voiceMode}
           />
-          <Button onClick={toggleVoiceMode} variant="outline" className="px-3 text-white border-white/20">
+          <Button onClick={toggleVoiceMode} variant="outline" className="px-3">
             {voiceMode ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
           </Button>
           <Button onClick={sendMessage}>Send</Button>
