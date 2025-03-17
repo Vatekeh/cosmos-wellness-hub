@@ -197,6 +197,11 @@
   @apply text-black;
 }
 
+/* Fix for glass-panel h4 elements */
+.glass-panel h4 {
+  @apply text-white;
+}
+
 /* Card component text colors */
 .card-title {
   @apply text-current;
