@@ -15,8 +15,8 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import PastEntries from "@/components/PastEntries";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
-// Sample data for mood chart
 const moodData = [
   { date: "Mon", mood: 6, energy: 7 },
   { date: "Tue", mood: 8, energy: 6 },
@@ -27,7 +27,6 @@ const moodData = [
   { date: "Sun", mood: 7, energy: 6 },
 ];
 
-// Sample timeline activity data
 const timelineData = [
   {
     title: "Today",
@@ -83,7 +82,6 @@ const timelineData = [
   }
 ];
 
-// Sample AI chat messages
 const initialMessages = [
   { 
     id: 1, 
@@ -105,7 +103,6 @@ const initialMessages = [
   }
 ];
 
-// Available moods for selection
 const moodOptions = [
   { emoji: "😊", label: "Happy", color: "bg-yellow-400 hover:bg-yellow-300" },
   { emoji: "😌", label: "Calm", color: "bg-blue-400 hover:bg-blue-300" },
@@ -136,7 +133,6 @@ const Dashboard = () => {
       setMessages([...messages, newMessage]);
       setCurrentMessage('');
       
-      // Simulate AI response after a short delay
       setTimeout(() => {
         const aiResponse = {
           id: messages.length + 2,
@@ -150,18 +146,12 @@ const Dashboard = () => {
   };
 
   const saveMoodEntry = () => {
-    // Here you would save the mood entry to your database
-    // For now, we'll just close the dialog and show a toast message
     setMoodDialogOpen(false);
-    // Reset mood note for next entry
     setMoodNote('');
-    // You could add a toast notification here to confirm the entry was saved
   };
 
   const toggleVoiceMode = () => {
     setVoiceMode(!voiceMode);
-    // Here you would implement voice recognition functionality
-    // For now, this just toggles the button state
   };
 
   return (
@@ -169,7 +159,6 @@ const Dashboard = () => {
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
       
       <div className="cosmos-container relative z-10">
-        {/* Header with greeting */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pt-4">
           <div>
             <h1 className="text-2xl md:text-4xl font-serif font-bold">
@@ -180,7 +169,6 @@ const Dashboard = () => {
             </p>
           </div>
           
-          {/* Mood selector in a dropdown/popover */}
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="mt-4 md:mt-0 flex items-center gap-2">
@@ -220,7 +208,6 @@ const Dashboard = () => {
           </Popover>
         </div>
         
-        {/* Mood entry dialog */}
         <Dialog open={moodDialogOpen} onOpenChange={setMoodDialogOpen}>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
@@ -259,9 +246,7 @@ const Dashboard = () => {
           </DialogContent>
         </Dialog>
         
-        {/* Main bento grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* AI Chat Companion */}
           <Card className="glass-panel col-span-1 lg:col-span-2 overflow-hidden flex flex-col">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center">
@@ -309,9 +294,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
           
-          {/* Right side panels */}
           <div className="col-span-1 space-y-6">
-            {/* Wellness Overview */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -355,7 +338,6 @@ const Dashboard = () => {
               </CardContent>
             </Card>
             
-            {/* Journal Options */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -365,35 +347,93 @@ const Dashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-3">
-                  <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-                    <CardContent className="p-4 flex flex-col items-center text-center">
-                      <Heart className="h-8 w-8 text-cosmos-coral mb-2" />
-                      <span className="text-sm">Gratitude</span>
-                    </CardContent>
-                  </Card>
-                  <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-                    <CardContent className="p-4 flex flex-col items-center text-center">
-                      <Brain className="h-8 w-8 text-cosmos-coral mb-2" />
-                      <span className="text-sm">Mindfulness</span>
-                    </CardContent>
-                  </Card>
-                  <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-                    <CardContent className="p-4 flex flex-col items-center text-center">
-                      <Moon className="h-8 w-8 text-cosmos-coral mb-2" />
-                      <span className="text-sm">Dreams</span>
-                    </CardContent>
-                  </Card>
-                  <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-                    <CardContent className="p-4 flex flex-col items-center text-center">
-                      <Plus className="h-8 w-8 text-cosmos-coral mb-2" />
-                      <span className="text-sm">Custom</span>
-                    </CardContent>
-                  </Card>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Card className="glass-panel bg-white/5 hover:bg-cosmos-coral/20 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
+                        <CardContent className="p-4 flex flex-col items-center text-center">
+                          <Heart className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm">Gratitude</span>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+                      <div className="flex justify-between space-x-4">
+                        <div>
+                          <h4 className="text-sm font-semibold">Gratitude Journal</h4>
+                          <p className="text-sm text-white/70">
+                            Record things you're thankful for to boost positive emotions and wellbeing.
+                          </p>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                  
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
+                        <CardContent className="p-4 flex flex-col items-center text-center">
+                          <Brain className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm">Mindfulness</span>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+                      <div className="flex justify-between space-x-4">
+                        <div>
+                          <h4 className="text-sm font-semibold">Mindfulness Journal</h4>
+                          <p className="text-sm text-white/70">
+                            Practice being present and aware of your thoughts, feelings, and surroundings.
+                          </p>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                  
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
+                        <CardContent className="p-4 flex flex-col items-center text-center">
+                          <Moon className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm">Dreams</span>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+                      <div className="flex justify-between space-x-4">
+                        <div>
+                          <h4 className="text-sm font-semibold">Dream Journal</h4>
+                          <p className="text-sm text-white/70">
+                            Record and analyze your dreams to gain insights into your subconscious mind.
+                          </p>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
+                  
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
+                        <CardContent className="p-4 flex flex-col items-center text-center">
+                          <Plus className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm">Custom</span>
+                        </CardContent>
+                      </Card>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+                      <div className="flex justify-between space-x-4">
+                        <div>
+                          <h4 className="text-sm font-semibold">Custom Journal</h4>
+                          <p className="text-sm text-white/70">
+                            Create your own personalized journal type to track what matters most to you.
+                          </p>
+                        </div>
+                      </div>
+                    </HoverCardContent>
+                  </HoverCard>
                 </div>
               </CardContent>
             </Card>
             
-            {/* Today's Meditation */}
             <Card className="glass-panel">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center">
@@ -416,13 +456,11 @@ const Dashboard = () => {
           </div>
         </div>
         
-        {/* Past Entries Section */}
         <div className="mt-12">
           <h2 className="text-xl md:text-2xl font-serif font-bold mb-6">Your Journal Entries</h2>
           <PastEntries />
         </div>
         
-        {/* Activity Timeline Section */}
         <div className="mt-12">
           <h2 className="text-xl md:text-2xl font-serif font-bold mb-6">Your Activity Timeline</h2>
           <Timeline data={timelineData} />
@@ -432,7 +470,6 @@ const Dashboard = () => {
   );
 };
 
-// Mock Chart component for the example
 const Chart = ({ className }: { className?: string }) => {
   return <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3 3V21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
