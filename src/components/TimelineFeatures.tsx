@@ -15,14 +15,14 @@ export default function TimelineFeatures() {
             techniques to the digital age.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Moon className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Guided Sleep</h4>
                 <p className="text-xs text-white/70">Peaceful sleep stories</p>
               </div>
             </Card>
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sun className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Daily Mindfulness</h4>
@@ -42,14 +42,14 @@ export default function TimelineFeatures() {
             understand their mental patterns.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Heart className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Mood Tracking</h4>
                 <p className="text-xs text-white/70">Emotional insights</p>
               </div>
             </Card>
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Brain className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Cognitive Exercises</h4>
@@ -85,14 +85,14 @@ export default function TimelineFeatures() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <CloudRain className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Ambient Sounds</h4>
                 <p className="text-xs text-white/70">Peaceful environments</p>
               </div>
             </Card>
-            <Card className="glass-panel p-5 flex items-center gap-3">
+            <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sparkles className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Personalized Growth</h4>

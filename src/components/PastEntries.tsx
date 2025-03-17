@@ -73,7 +73,7 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
   return (
     <Card className={cn("glass-panel", className)}>
       <CardHeader className="pb-2">
-        <CardTitle className="flex items-center">
+        <CardTitle className="flex items-center text-white">
           <Book className="h-5 w-5 mr-2 text-cosmos-coral" />
           Past Entries
         </CardTitle>
@@ -83,7 +83,7 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
           {pastEntriesData.map((entry) => (
             <Card 
               key={entry.id} 
-              className="group relative overflow-hidden bg-white/5 hover:bg-cosmos-coral/10 transition-all duration-300 border border-white/10"
+              className="group relative overflow-hidden bg-white/5 hover:bg-cosmos-coral/10 transition-all duration-300 border border-white/10 text-white"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-cosmos-coral/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardContent className="p-6">
@@ -113,7 +113,7 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
             </Card>
           ))}
           
-          <Card className="col-span-1 md:col-span-2 bg-cosmos-coral/5 hover:bg-cosmos-coral/10 transition-colors cursor-pointer border border-cosmos-coral/20">
+          <Card className="col-span-1 md:col-span-2 bg-cosmos-coral/5 hover:bg-cosmos-coral/10 transition-colors cursor-pointer border border-cosmos-coral/20 text-white">
             <CardContent className="flex justify-center items-center p-4">
               <Button variant="ghost" className="text-cosmos-coral">
                 View All Entries <ArrowRight className="ml-2 h-4 w-4" />

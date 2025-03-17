@@ -64,7 +64,7 @@ const PricingCards: React.FC = () => {
           {pricingPlans.map((plan, index) => (
             <div key={index} className="flex">
               <Card className={`
-                glass-panel border-white/10 backdrop-blur-lg w-full flex flex-col transition-all duration-300 hover:translate-y-[-5px]
+                glass-panel border-white/10 backdrop-blur-lg w-full flex flex-col transition-all duration-300 hover:translate-y-[-5px] text-white
                 ${plan.popular ? 'border-cosmos-coral shadow-lg shadow-cosmos-coral/20 relative overflow-hidden' : ''}
               `}>
                 {plan.popular && (
@@ -75,9 +75,9 @@ const PricingCards: React.FC = () => {
                   </div>
                 )}
                 <CardHeader className="pb-0">
-                  <CardTitle className="text-2xl font-serif">{plan.name}</CardTitle>
+                  <CardTitle className="text-2xl font-serif text-white">{plan.name}</CardTitle>
                   <div className="flex items-end mt-2">
-                    <span className="text-4xl font-bold">{plan.price}</span>
+                    <span className="text-4xl font-bold text-white">{plan.price}</span>
                     {plan.period && <span className="text-white/70 ml-1">/{plan.period}</span>}
                   </div>
                   <CardDescription className="text-white/70 mt-2">{plan.description}</CardDescription>
