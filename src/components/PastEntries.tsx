@@ -94,14 +94,14 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-1">
                       <h4 className="font-medium text-white text-lg">{entry.title}</h4>
-                      <span className="text-xs text-white/70">{formatDate(entry.date)}</span>
+                      <span className="text-xs text-white opacity-70">{formatDate(entry.date)}</span>
                     </div>
                     <div className="flex items-center mb-3">
                       <span className="text-xs bg-white/20 rounded-full px-2 py-0.5 text-white">
                         {entry.mood}
                       </span>
                     </div>
-                    <p className="text-sm text-white/80 mb-4 line-clamp-2">{entry.excerpt}</p>
+                    <p className="text-sm text-white opacity-80 mb-4 line-clamp-2">{entry.excerpt}</p>
                     <div className="flex justify-end">
                       <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
                         Read More <ArrowRight className="ml-2 h-4 w-4" />

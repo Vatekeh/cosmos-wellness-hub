@@ -10,7 +10,7 @@ export default function TimelineFeatures() {
       title: "2023",
       content: (
         <div>
-          <p className="text-white/80 text-xs md:text-sm font-normal mb-8">
+          <p className="text-white opacity-80 text-xs md:text-sm font-normal mb-8">
             We launched Cosmos with our foundational mindfulness tools, bringing ancient meditation 
             techniques to the digital age.
           </p>
@@ -19,14 +19,14 @@ export default function TimelineFeatures() {
               <Moon className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Guided Sleep</h4>
-                <p className="text-xs text-white/70">Peaceful sleep stories</p>
+                <p className="text-xs text-white opacity-70">Peaceful sleep stories</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sun className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Daily Mindfulness</h4>
-                <p className="text-xs text-white/70">Short exercises</p>
+                <p className="text-xs text-white opacity-70">Short exercises</p>
               </div>
             </Card>
           </div>
@@ -37,7 +37,7 @@ export default function TimelineFeatures() {
       title: "2024",
       content: (
         <div>
-          <p className="text-white/80 text-xs md:text-sm font-normal mb-8">
+          <p className="text-white opacity-80 text-xs md:text-sm font-normal mb-8">
             Expanded our platform with advanced cognitive tools and personalized emotional tracking to help users 
             understand their mental patterns.
           </p>
@@ -46,14 +46,14 @@ export default function TimelineFeatures() {
               <Heart className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Mood Tracking</h4>
-                <p className="text-xs text-white/70">Emotional insights</p>
+                <p className="text-xs text-white opacity-70">Emotional insights</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Brain className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Cognitive Exercises</h4>
-                <p className="text-xs text-white/70">Build resilience</p>
+                <p className="text-xs text-white opacity-70">Build resilience</p>
               </div>
             </Card>
           </div>
@@ -64,23 +64,23 @@ export default function TimelineFeatures() {
       title: "2025",
       content: (
         <div>
-          <p className="text-white/80 text-xs md:text-sm font-normal mb-4">
+          <p className="text-white opacity-80 text-xs md:text-sm font-normal mb-4">
             Introducing our most immersive features to date, connecting the cosmos with your personal journey.
           </p>
           <div className="mb-8">
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
+            <div className="flex gap-2 items-center text-white opacity-80 text-xs md:text-sm mb-2">
               ✨ Conversational AI Companion for daily check-ins
             </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
+            <div className="flex gap-2 items-center text-white opacity-80 text-xs md:text-sm mb-2">
               ✨ Multi-mode journaling system (Gratitude, Dreams, Mindfulness)
             </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
+            <div className="flex gap-2 items-center text-white opacity-80 text-xs md:text-sm mb-2">
               ✨ Auto-logging timeline of activities and insights
             </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
+            <div className="flex gap-2 items-center text-white opacity-80 text-xs md:text-sm mb-2">
               ✨ AI-generated patterns and emotional insights
             </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm">
+            <div className="flex gap-2 items-center text-white opacity-80 text-xs md:text-sm">
               ✨ Professional support and community connections
             </div>
           </div>
@@ -89,14 +89,14 @@ export default function TimelineFeatures() {
               <CloudRain className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Ambient Sounds</h4>
-                <p className="text-xs text-white/70">Peaceful environments</p>
+                <p className="text-xs text-white opacity-70">Peaceful environments</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sparkles className="w-8 h-8 text-cosmos-coral" />
               <div>
                 <h4 className="font-semibold">Personalized Growth</h4>
-                <p className="text-xs text-white/70">Tailored recommendations</p>
+                <p className="text-xs text-white opacity-70">Tailored recommendations</p>
               </div>
             </Card>
           </div>

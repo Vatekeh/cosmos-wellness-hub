@@ -24,11 +24,11 @@ const JournalOptions: React.FC = () => {
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Gratitude Journal</h4>
-                  <p className="text-sm text-white/70">
+                  <p className="text-sm text-white opacity-70">
                     Record things you're thankful for to boost positive emotions and wellbeing.
                   </p>
                 </div>
@@ -45,11 +45,11 @@ const JournalOptions: React.FC = () => {
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Mindfulness Journal</h4>
-                  <p className="text-sm text-white/70">
+                  <p className="text-sm text-white opacity-70">
                     Practice being present and aware of your thoughts, feelings, and surroundings.
                   </p>
                 </div>
@@ -66,11 +66,11 @@ const JournalOptions: React.FC = () => {
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Dream Journal</h4>
-                  <p className="text-sm text-white/70">
+                  <p className="text-sm text-white opacity-70">
                     Record and analyze your dreams to gain insights into your subconscious mind.
                   </p>
                 </div>
@@ -87,11 +87,11 @@ const JournalOptions: React.FC = () => {
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30">
+            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Custom Journal</h4>
-                  <p className="text-sm text-white/70">
+                  <p className="text-sm text-white opacity-70">
                     Create your own personalized journal type to track what matters most to you.
                   </p>
                 </div>

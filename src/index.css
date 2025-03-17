@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -72,11 +73,20 @@
   }
 
   .glass-panel {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl;
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl text-white;
   }
   
   .hover-card-content {
     @apply text-white bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  /* Custom opacity text utilities */
+  .text-white-70 {
+    @apply text-white opacity-70;
+  }
+  
+  .text-black-70 {
+    @apply text-black opacity-70;
   }
 }
 
@@ -162,7 +172,7 @@
   @apply text-black;
 }
 
-/* Override specific components with white backgrounds but need white text */
+/* Override specific components with dark backgrounds that need white text */
 .glass-panel, 
 .bg-cosmos-midnight, 
 .bg-cosmos-deepPurple, 
@@ -182,7 +192,7 @@
 }
 
 .card-description {
-  @apply text-current/70;
+  @apply text-current opacity-70;
 }
 
 /* Fix for ui/card component default text */
