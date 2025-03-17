@@ -154,3 +154,17 @@
 .glass-panel, .bg-cosmos-midnight, .bg-cosmos-deepPurple, .bg-white\/5, .bg-white\/10, .bg-white\/20 {
   @apply text-white;
 }
+
+/* Card component text colors */
+.card-title {
+  @apply text-current;
+}
+
+.card-description {
+  @apply text-current/70;
+}
+
+/* Fix for ui/card component default text */
+.text-card-foreground {
+  @apply text-current;
+}
