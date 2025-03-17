@@ -1,11 +1,11 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book, Calendar, FileText } from 'lucide-react';
+import { Book, Calendar, FileText, ArrowRight } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 // Sample data for past entries
-// In a real application, this would come from your database
 const pastEntriesData = [
   {
     id: 1,
@@ -79,34 +79,46 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {pastEntriesData.map((entry) => (
             <Card 
               key={entry.id} 
-              className="bg-white/5 hover:bg-white/10 transition-colors cursor-pointer p-4"
+              className="group relative overflow-hidden bg-white/5 hover:bg-cosmos-coral/10 transition-all duration-300 border border-white/10"
             >
-              <div className="flex items-start gap-3">
-                <div className="mt-1">
-                  {getEntryIcon(entry.type)}
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium">{entry.title}</h4>
-                    <span className="text-xs text-white/70">{formatDate(entry.date)}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-cosmos-coral/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardContent className="p-6">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 p-2 bg-cosmos-coral/20 rounded-full">
+                    {getEntryIcon(entry.type)}
                   </div>
-                  <div className="flex items-center mb-2">
-                    <span className="text-xs bg-white/20 rounded-full px-2 py-0.5">
-                      {entry.mood}
-                    </span>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className="font-medium text-white text-lg">{entry.title}</h4>
+                      <span className="text-xs text-white/70">{formatDate(entry.date)}</span>
+                    </div>
+                    <div className="flex items-center mb-3">
+                      <span className="text-xs bg-white/20 rounded-full px-2 py-0.5 text-white">
+                        {entry.mood}
+                      </span>
+                    </div>
+                    <p className="text-sm text-white/80 mb-4 line-clamp-2">{entry.excerpt}</p>
+                    <div className="flex justify-end">
+                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
+                        Read More <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
-                  <p className="text-sm text-white/80 line-clamp-2">{entry.excerpt}</p>
                 </div>
-              </div>
+              </CardContent>
             </Card>
           ))}
           
-          <Card className="bg-white/5 hover:bg-white/10 transition-colors cursor-pointer p-4 flex justify-center items-center">
-            <span className="text-white/70 text-sm">View All Entries</span>
+          <Card className="col-span-1 md:col-span-2 bg-cosmos-coral/5 hover:bg-cosmos-coral/10 transition-colors cursor-pointer border border-cosmos-coral/20">
+            <CardContent className="flex justify-center items-center p-4">
+              <Button variant="ghost" className="text-cosmos-coral">
+                View All Entries <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </CardContent>
           </Card>
         </div>
       </CardContent>
