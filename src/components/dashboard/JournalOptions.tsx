@@ -20,11 +20,11 @@ const JournalOptions: React.FC = () => {
               <Card className="glass-panel bg-white/5 hover:bg-cosmos-coral/20 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
                 <CardContent className="p-4 flex flex-col items-center text-center">
                   <Heart className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">Gratitude</span>
+                  <span className="text-sm text-white">Gratitude</span>
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
+            <HoverCardContent className="hover-card-content">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Gratitude Journal</h4>
@@ -41,11 +41,11 @@ const JournalOptions: React.FC = () => {
               <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
                 <CardContent className="p-4 flex flex-col items-center text-center">
                   <Brain className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">Mindfulness</span>
+                  <span className="text-sm text-white">Mindfulness</span>
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
+            <HoverCardContent className="hover-card-content">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Mindfulness Journal</h4>
@@ -62,11 +62,11 @@ const JournalOptions: React.FC = () => {
               <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
                 <CardContent className="p-4 flex flex-col items-center text-center">
                   <Moon className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">Dreams</span>
+                  <span className="text-sm text-white">Dreams</span>
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
+            <HoverCardContent className="hover-card-content">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Dream Journal</h4>
@@ -83,11 +83,11 @@ const JournalOptions: React.FC = () => {
               <Card className="glass-panel bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg">
                 <CardContent className="p-4 flex flex-col items-center text-center">
                   <Plus className="h-8 w-8 text-cosmos-coral mb-2 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm">Custom</span>
+                  <span className="text-sm text-white">Custom</span>
                 </CardContent>
               </Card>
             </HoverCardTrigger>
-            <HoverCardContent className="w-80 bg-white/10 backdrop-blur-md border-cosmos-coral/30 text-white">
+            <HoverCardContent className="hover-card-content">
               <div className="flex justify-between space-x-4">
                 <div>
                   <h4 className="text-sm font-semibold">Custom Journal</h4>
