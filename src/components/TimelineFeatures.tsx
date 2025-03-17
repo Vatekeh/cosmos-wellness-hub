@@ -18,14 +18,14 @@ export default function TimelineFeatures() {
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Moon className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Guided Sleep</h4>
+                <h4 className="font-semibold text-white">Guided Sleep</h4>
                 <p className="text-xs text-white opacity-70">Peaceful sleep stories</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sun className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Daily Mindfulness</h4>
+                <h4 className="font-semibold text-white">Daily Mindfulness</h4>
                 <p className="text-xs text-white opacity-70">Short exercises</p>
               </div>
             </Card>
@@ -45,14 +45,14 @@ export default function TimelineFeatures() {
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Heart className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Mood Tracking</h4>
+                <h4 className="font-semibold text-white">Mood Tracking</h4>
                 <p className="text-xs text-white opacity-70">Emotional insights</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Brain className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Cognitive Exercises</h4>
+                <h4 className="font-semibold text-white">Cognitive Exercises</h4>
                 <p className="text-xs text-white opacity-70">Build resilience</p>
               </div>
             </Card>
