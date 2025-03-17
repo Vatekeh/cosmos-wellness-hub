@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, LogIn } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Menu, X, Moon } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,23 +22,20 @@ const Navbar: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-4 backdrop-blur-xl bg-cosmos-midnight/80' : 'py-6 bg-transparent'}`}>
       <div className="cosmos-container flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-2">
           <div className="relative w-8 h-8">
             <Moon className="w-6 h-6 text-cosmos-coral absolute animate-pulse-slow" />
           </div>
           <span className="text-2xl font-serif font-semibold">Cosmos</span>
-        </Link>
+        </a>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#features" className="cosmos-link text-white/90 hover:text-white">Features</a>
           <a href="#benefits" className="cosmos-link text-white/90 hover:text-white">Benefits</a>
-          <a href="#research" className="cosmos-link text-white/90 hover:text-white">Research</a>
-          <Link to="/pricing" className="cosmos-link text-white/90 hover:text-white">Pricing</Link>
-          <Link to="/dashboard" className="cosmos-button-primary ml-2 flex items-center gap-2">
-            <LogIn className="w-4 h-4" />
-            <span>Login</span>
-          </Link>
+          <a href="#testimonials" className="cosmos-link text-white/90 hover:text-white">Testimonials</a>
+          <a href="#faq" className="cosmos-link text-white/90 hover:text-white">FAQ</a>
+          <a href="#download" className="cosmos-button-primary ml-2">Download App</a>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -58,12 +54,9 @@ const Navbar: React.FC = () => {
           <div className="py-8 px-4 flex flex-col gap-6 text-center">
             <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Features</a>
             <a href="#benefits" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Benefits</a>
-            <a href="#research" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Research</a>
-            <Link to="/pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Pricing</Link>
-            <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="cosmos-button-primary mt-4 w-full flex justify-center items-center gap-2">
-              <LogIn className="w-4 h-4" />
-              <span>Login</span>
-            </Link>
+            <a href="#testimonials" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">Testimonials</a>
+            <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="text-lg py-3">FAQ</a>
+            <a href="#download" onClick={() => setIsMobileMenuOpen(false)} className="cosmos-button-primary mt-4 w-full flex justify-center">Download App</a>
           </div>
         </div>
       )}

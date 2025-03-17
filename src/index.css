@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -48,10 +49,6 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
-
-  input::placeholder {
-    @apply text-white/50;
-  }
 }
 
 @layer components {
@@ -72,20 +69,7 @@
   }
 
   .glass-panel {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl text-white;
-  }
-  
-  .hover-card-content {
-    @apply text-white bg-white/10 backdrop-blur-md border border-white/20;
-  }
-
-  /* Custom opacity text utilities */
-  .text-white-70 {
-    @apply text-white opacity-70;
-  }
-  
-  .text-black-70 {
-    @apply text-black opacity-70;
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl;
   }
 }
 
@@ -147,70 +131,4 @@
   width: 200%;
   height: auto;
   min-width: 1200px;
-}
-
-/* Text color handling for different backgrounds */
-/* Light backgrounds (explicit) */
-.bg-white, 
-.bg-white\/90, 
-.bg-white\/80, 
-.bg-white\/70,
-.bg-white\/50, 
-.bg-white\/40, 
-.bg-white\/30, 
-.bg-white\/20,
-.bg-white\/10,
-.bg-white\/5,
-[class*="bg-white"] {
-  @apply text-black;
-}
-
-/* Common UI components with light backgrounds */
-.bg-card, 
-.bg-background, 
-.bg-muted,
-.bg-secondary,
-.bg-accent {
-  @apply text-black;
-}
-
-/* Dark backgrounds that need white text */
-.glass-panel, 
-.bg-cosmos-midnight, 
-.bg-cosmos-deepPurple, 
-.bg-cosmos-purple,
-.bg-cosmos-coral,
-.bg-cosmos-coral\/80,
-.bg-cosmos-coral\/70,
-.bg-cosmos-coral\/60,
-.bg-cosmos-coral\/50,
-.bg-cosmos-coral\/40,
-.bg-cosmos-coral\/30 {
-  @apply text-white;
-}
-
-/* Very light backgrounds for cosmos-coral */
-.bg-cosmos-coral\/5,
-.bg-cosmos-coral\/10,
-.bg-cosmos-coral\/20 {
-  @apply text-black;
-}
-
-/* Fix for glass-panel h4 elements - with higher specificity */
-.glass-panel h4 {
-  @apply text-white !important;
-}
-
-/* Card component text colors */
-.card-title {
-  @apply text-current;
-}
-
-.card-description {
-  @apply text-current opacity-70;
-}
-
-/* Fix for ui/card component default text */
-.text-card-foreground {
-  @apply text-current;
 }
