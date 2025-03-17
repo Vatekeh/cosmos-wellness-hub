@@ -18,12 +18,11 @@ const Index: React.FC = () => {
         const href = this.getAttribute('href');
         if (!href) return;
         
-        const targetId = href.substring(1); // Remove the # character
-        const target = document.getElementById(targetId);
+        const target = document.querySelector(href);
         if (!target) return;
         
         window.scrollTo({
-          top: target.offsetTop,
+          top: (target as HTMLElement).offsetTop,
           behavior: 'smooth'
         });
       });
