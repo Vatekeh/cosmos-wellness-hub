@@ -64,26 +64,51 @@ export default function TimelineFeatures() {
       title: "2025",
       content: (
         <div>
-          <p className="text-white/80 text-xs md:text-sm font-normal mb-4">
+          <p className="text-white/80 text-xs md:text-sm font-normal mb-8">
             Introducing our most immersive features to date, connecting the cosmos with your personal journey.
           </p>
-          <div className="mb-8">
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Conversational AI Companion for daily check-ins
-            </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Multi-mode journaling system (Gratitude, Dreams, Mindfulness)
-            </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Auto-logging timeline of activities and insights
-            </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ AI-generated patterns and emotional insights
-            </div>
-            <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm">
-              ✨ Professional support and community connections
-            </div>
+          <div className="grid grid-cols-1 gap-6 mb-8">
+            <Card className="glass-panel p-5">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/a7034284-574f-4b92-8292-694645d220e8.png" 
+                    alt="Maya's Journey" 
+                    className="w-20 h-20 rounded-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Maya, 34 - Reduced anxiety by 64%</h4>
+                  <p className="text-white/80 text-xs md:text-sm">
+                    "After using Cosmos for just 3 months, I've noticed a significant decrease in my daily anxiety. 
+                    The guided meditations and sleep stories have transformed my evenings, and I'm finally getting 
+                    restful sleep. The mood tracking helped me identify specific triggers I wasn't aware of before."
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="glass-panel p-5">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-shrink-0">
+                  <img 
+                    src="/lovable-uploads/a7034284-574f-4b92-8292-694645d220e8.png" 
+                    alt="Miles's Journey" 
+                    className="w-20 h-20 rounded-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Miles, 28 - Improved focus & productivity</h4>
+                  <p className="text-white/80 text-xs md:text-sm">
+                    "The cognitive exercises in Cosmos have been game-changing for my work performance. 
+                    I'm able to maintain focus for longer periods and actually complete tasks without feeling 
+                    overwhelmed. The ambient sounds feature creates the perfect atmosphere for deep work."
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
+          
           <div className="grid grid-cols-2 gap-4">
             <Card className="glass-panel p-5 flex items-center gap-3">
               <CloudRain className="w-8 h-8 text-cosmos-coral" />
