@@ -49,10 +49,9 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
   }
-  
-  /* Make sure text is always visible against backgrounds */
-  p, span, div {
-    @apply text-white;
+
+  input::placeholder {
+    @apply text-white/50;
   }
 }
 
@@ -75,6 +74,10 @@
 
   .glass-panel {
     @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl;
+  }
+  
+  .hover-card-content {
+    @apply text-white bg-white/10 backdrop-blur-md border border-white/20;
   }
 }
 
