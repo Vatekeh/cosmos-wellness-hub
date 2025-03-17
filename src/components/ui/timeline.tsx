@@ -10,42 +10,41 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       setHeight(rect.height);
     }
-  }, [ref]);
 
-  useEffect(() => {
+    // Create intersection observer for scroll animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute("data-index") || "-1");
-            setActiveIndex(index);
+            const ratio = Math.min(Math.max(entry.intersectionRatio, 0), 1);
+            setScrollProgress(ratio);
           }
         });
       },
       {
-        rootMargin: "-100px 0px -100px 0px",
-        threshold: 0.5,
+        root: null,
+        rootMargin: "0px",
+        threshold: Array.from({ length: 101 }, (_, i) => i / 100),
       }
     );
 
-    const timelineItems = document.querySelectorAll(".timeline-item");
-    timelineItems.forEach((item) => {
-      observer.observe(item);
-    });
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     return () => {
-      timelineItems.forEach((item) => {
-        observer.unobserve(item);
-      });
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
     };
-  }, [data]);
+  }, [ref]);
 
   return (
     <div
@@ -65,14 +64,21 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            data-index={index}
-            className={`timeline-item flex justify-start pt-10 md:pt-40 md:gap-10 transition-all duration-700 
-            ${activeIndex >= index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            style={{
+              opacity: scrollProgress > index * 0.2 ? 1 : 0.3,
+              transform: `translateY(${scrollProgress > index * 0.2 ? 0 : 20}px)`,
+              transition: "opacity 0.6s ease-out, transform 0.6s ease-out"
+            }}
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-cosmos-purple/20 flex items-center justify-center">
-                <div className={`h-4 w-4 rounded-full bg-cosmos-coral border border-cosmos-lightCoral p-2 
-                ${activeIndex === index ? "animate-pulse-slow" : ""}`} />
+                <div 
+                  className="h-4 w-4 rounded-full bg-cosmos-coral border border-cosmos-lightCoral p-2"
+                  style={{
+                    animation: scrollProgress > index * 0.2 ? "pulse 2s infinite" : "none"
+                  }}
+                />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-cosmos-coral">
                 {item.title}
@@ -83,7 +89,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-cosmos-coral">
                 {item.title}
               </h3>
-              {item.content}{" "}
+              {item.content}
             </div>
           </div>
         ))}
@@ -95,9 +101,9 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         >
           <div
             style={{
-              height: `${activeIndex >= 0 ? (height * (activeIndex + 1) / data.length) : 0}px`,
-              opacity: 0.8,
-              transition: "height 1s ease-in-out",
+              height: `${(height * scrollProgress)}px`,
+              opacity: scrollProgress * 0.8 + 0.2,
+              transition: "height 0.3s ease-out, opacity 0.3s ease-out"
             }}
             className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-cosmos-coral via-cosmos-purple to-transparent from-[0%] via-[50%] rounded-full"
           />
@@ -106,3 +112,4 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     </div>
   );
 };
+
