@@ -69,19 +69,19 @@ export default function TimelineFeatures() {
           </p>
           <div className="mb-8">
             <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Ambient soundscapes from around the world
+              ✨ Conversational AI Companion for daily check-ins
             </div>
             <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Personalized growth paths based on your progress
+              ✨ Multi-mode journaling system (Gratitude, Dreams, Mindfulness)
             </div>
             <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Integration with wearable devices for sleep tracking
+              ✨ Auto-logging timeline of activities and insights
             </div>
             <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm mb-2">
-              ✨ Community challenges and support networks
+              ✨ AI-generated patterns and emotional insights
             </div>
             <div className="flex gap-2 items-center text-white/80 text-xs md:text-sm">
-              ✨ AI-powered insights tailored to your journey
+              ✨ Professional support and community connections
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
