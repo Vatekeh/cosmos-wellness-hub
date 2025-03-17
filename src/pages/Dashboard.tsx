@@ -224,24 +224,27 @@ const Dashboard = () => {
                     energy: { label: "Energy", color: "#4ECDC4" }
                   }}
                 >
-                  <AreaChart data={moodData}>
-                    <defs>
-                      <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0}/>
-                      </linearGradient>
-                      <linearGradient id="colorEnergy" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8}/>
-                        <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="date" stroke="#888" fontSize={12} />
-                    <YAxis stroke="#888" fontSize={12} />
-                    <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Area type="monotone" dataKey="mood" stroke="#FF6B6B" fillOpacity={1} fill="url(#colorMood)" />
-                    <Area type="monotone" dataKey="energy" stroke="#4ECDC4" fillOpacity={1} fill="url(#colorEnergy)" />
-                  </AreaChart>
+                  {/* Wrap all chart elements in a single ResponsiveContainer to fix the TypeScript error */}
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={moodData}>
+                      <defs>
+                        <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#FF6B6B" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#FF6B6B" stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorEnergy" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#4ECDC4" stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor="#4ECDC4" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                      <XAxis dataKey="date" stroke="#888" fontSize={12} />
+                      <YAxis stroke="#888" fontSize={12} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                      <Area type="monotone" dataKey="mood" stroke="#FF6B6B" fillOpacity={1} fill="url(#colorMood)" />
+                      <Area type="monotone" dataKey="energy" stroke="#4ECDC4" fillOpacity={1} fill="url(#colorEnergy)" />
+                    </AreaChart>
+                  </ResponsiveContainer>
                   <ChartLegend className="mt-2" />
                 </ChartContainer>
                 <div className="mt-4 text-sm text-white/70">
