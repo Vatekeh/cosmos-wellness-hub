@@ -88,14 +88,14 @@ export default function TimelineFeatures() {
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <CloudRain className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Ambient Sounds</h4>
+                <h4 className="font-semibold text-white">Ambient Sounds</h4>
                 <p className="text-xs text-white opacity-70">Peaceful environments</p>
               </div>
             </Card>
             <Card className="glass-panel p-5 flex items-center gap-3 text-white">
               <Sparkles className="w-8 h-8 text-cosmos-coral" />
               <div>
-                <h4 className="font-semibold">Personalized Growth</h4>
+                <h4 className="font-semibold text-white">Personalized Growth</h4>
                 <p className="text-xs text-white opacity-70">Tailored recommendations</p>
               </div>
             </Card>
