@@ -83,7 +83,7 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
           {pastEntriesData.map((entry) => (
             <Card 
               key={entry.id} 
-              className="group relative overflow-hidden bg-white/5 hover:bg-cosmos-coral/10 transition-all duration-300 border border-white/10 text-white"
+              className="group relative overflow-hidden bg-white hover:bg-cosmos-coral/10 transition-all duration-300 border border-white/10"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-cosmos-coral/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <CardContent className="p-6">
@@ -93,17 +93,17 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-start mb-1">
-                      <h4 className="font-medium text-white text-lg">{entry.title}</h4>
-                      <span className="text-xs text-white opacity-70">{formatDate(entry.date)}</span>
+                      <h4 className="font-medium text-black text-lg">{entry.title}</h4>
+                      <span className="text-xs text-black opacity-70">{formatDate(entry.date)}</span>
                     </div>
                     <div className="flex items-center mb-3">
-                      <span className="text-xs bg-white/20 rounded-full px-2 py-0.5 text-white">
+                      <span className="text-xs bg-cosmos-coral/20 rounded-full px-2 py-0.5 text-black">
                         {entry.mood}
                       </span>
                     </div>
-                    <p className="text-sm text-white opacity-80 mb-4 line-clamp-2">{entry.excerpt}</p>
+                    <p className="text-sm text-black opacity-80 mb-4 line-clamp-2">{entry.excerpt}</p>
                     <div className="flex justify-end">
-                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
+                      <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-cosmos-coral">
                         Read More <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </div>
@@ -113,7 +113,7 @@ const PastEntries: React.FC<PastEntriesProps> = ({ className }) => {
             </Card>
           ))}
           
-          <Card className="col-span-1 md:col-span-2 bg-cosmos-coral/5 hover:bg-cosmos-coral/10 transition-colors cursor-pointer border border-cosmos-coral/20 text-white">
+          <Card className="col-span-1 md:col-span-2 bg-cosmos-coral/5 hover:bg-cosmos-coral/10 transition-colors cursor-pointer border border-cosmos-coral/20 text-cosmos-coral">
             <CardContent className="flex justify-center items-center p-4">
               <Button variant="ghost" className="text-cosmos-coral">
                 View All Entries <ArrowRight className="ml-2 h-4 w-4" />
