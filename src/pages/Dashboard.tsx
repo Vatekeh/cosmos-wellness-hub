@@ -14,6 +14,7 @@ import { Timeline } from "@/components/ui/timeline";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import PastEntries from "@/components/PastEntries";
 
 // Sample data for mood chart
 const moodData = [
@@ -413,6 +414,12 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+        
+        {/* Past Entries Section */}
+        <div className="mt-12">
+          <h2 className="text-xl md:text-2xl font-serif font-bold mb-6">Your Journal Entries</h2>
+          <PastEntries />
         </div>
         
         {/* Activity Timeline Section */}
