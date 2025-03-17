@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -197,9 +196,9 @@
   @apply text-black;
 }
 
-/* Fix for glass-panel h4 elements */
+/* Fix for glass-panel h4 elements - with higher specificity */
 .glass-panel h4 {
-  @apply text-white;
+  @apply text-white !important;
 }
 
 /* Card component text colors */
