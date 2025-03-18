@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Moon, Sun, Heart, Brain, CloudRain, Sparkles } from 'lucide-react';
 
 const features = [
@@ -36,37 +36,6 @@ const features = [
 ];
 
 const Features: React.FC = () => {
-  const featuresRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-scale-up');
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
-    if (featuresRef.current) {
-      const featureCards = featuresRef.current.querySelectorAll('.feature-card');
-      featureCards.forEach((card) => {
-        observer.observe(card);
-      });
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <section id="features" className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
@@ -86,12 +55,11 @@ const Features: React.FC = () => {
           </p>
         </div>
         
-        <div ref={featuresRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="feature-card opacity-0 glass-panel p-8 flex flex-col items-center text-center"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="feature-card glass-panel p-8 flex flex-col items-center text-center transition-all duration-300 hover:translate-y-[-5px]"
             >
               <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 mb-6">
                 {feature.icon}
