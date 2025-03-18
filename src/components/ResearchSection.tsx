@@ -82,12 +82,12 @@ const ResearchSection: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#e8ecd9] rounded-2xl p-10 flex flex-col items-center justify-center min-h-[300px] text-cosmos-midnight">
                 <PhoneCall className="w-10 h-10 text-[#6d794d] mb-4" />
-                <div className="text-xl font-medium text-[#6d794d]">Cosmos</div>
+                <div className="text-xl font-medium text-[#6d794d]">Maya</div>
               </div>
               
               <div className="bg-[#e8ecd9] rounded-2xl p-10 flex flex-col items-center justify-center min-h-[300px] text-cosmos-midnight">
                 <PhoneCall className="w-10 h-10 text-[#6d794d] mb-4" />
-                <div className="text-xl font-medium text-[#6d794d]">Wanda</div>
+                <div className="text-xl font-medium text-[#6d794d]">Miles</div>
               </div>
             </div>
             

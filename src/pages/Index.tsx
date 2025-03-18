@@ -6,6 +6,7 @@ import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Benefits from '../components/Benefits';
 import ResearchSection from '../components/ResearchSection';
+import Testimonials from '../components/Testimonials';
 import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
 
@@ -42,6 +43,7 @@ const Index: React.FC = () => {
         <Features />
         <Benefits />
         <ResearchSection />
+        <Testimonials />
         <CallToAction />
       </main>
       <Footer />
