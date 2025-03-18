@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import StarField from '../components/StarField';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import Features from '../components/features';
+import Features from '../components/Features';
 import Benefits from '../components/Benefits';
 import ResearchSection from '../components/ResearchSection';
 import CallToAction from '../components/CallToAction';
