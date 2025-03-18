@@ -61,8 +61,6 @@ const CollageVisual: React.FC<CollageVisualProps> = ({ features }) => {
                   y: [-(index % 3) * 10, (index % 3) * 10],
                   rotate: [-(index % 2), (index % 2)],
                 }}
-                // Removed the duplicate transition property and merged with the continuous animation
-                // The transition property is used for both the initial animation and the continuous floating
               >
                 <div className="flex flex-col h-full">
                   <div className="mb-3">{feature.icon}</div>
