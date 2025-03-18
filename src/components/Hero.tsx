@@ -1,39 +1,11 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { MoveDown, Star, Moon } from 'lucide-react';
 import WaveAnimation from './WaveAnimation';
 
 const Hero: React.FC = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const moonRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleParallax = () => {
-      if (!heroRef.current || !moonRef.current || !textRef.current) return;
-      
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // Only apply parallax when hero is in view
-      if (scrollPosition < windowHeight) {
-        const intensity = 0.05;
-        // Move the moon slower than scrolling for parallax effect
-        moonRef.current.style.transform = `translateY(${scrollPosition * intensity}px)`;
-        // Move text slightly faster for opposite parallax effect
-        textRef.current.style.transform = `translateY(${-scrollPosition * intensity * 0.5}px)`;
-      }
-    };
-    
-    window.addEventListener('scroll', handleParallax);
-    return () => {
-      window.removeEventListener('scroll', handleParallax);
-    };
-  }, []);
-
   return (
     <section 
-      ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
       {/* Background elements */}
@@ -43,9 +15,8 @@ const Hero: React.FC = () => {
       
       <div className="absolute bottom-0 left-0 w-full h-[400px] bg-gradient-to-t from-cosmos-purple/20 to-transparent opacity-50 z-0 rounded-t-[50%] transform translate-y-[50%]"></div>
       
-      {/* Parallax Moon */}
+      {/* Static Moon */}
       <div 
-        ref={moonRef}
         className="absolute top-[15%] right-[15%] sm:right-[25%] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10 animate-float"
       >
         <Moon className="w-full h-full text-white opacity-90" />
@@ -64,7 +35,6 @@ const Hero: React.FC = () => {
       
       {/* Main Content */}
       <div 
-        ref={textRef}
         className="cosmos-container relative z-20 mt-20 md:mt-0 text-center"
       >
         <div className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md mb-6 animate-fadeIn">
