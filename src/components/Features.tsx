@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Moon, Sun, Heart, Brain, CloudRain, Sparkles } from 'lucide-react';
 
 const features = [
@@ -36,8 +36,52 @@ const features = [
 ];
 
 const Features: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    // Initialize all feature cards with opacity 0
+    featureRefs.current.forEach((card) => {
+      if (card) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+      }
+    });
+
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top;
+      const windowHeight = window.innerHeight;
+      
+      // Check if section is in view
+      if (sectionTop < windowHeight * 0.75) {
+        featureRefs.current.forEach((card, index) => {
+          if (card) {
+            // Delayed appearance for each card
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, index * 100);
+          }
+        });
+      }
+    };
+    
+    // Run once on component mount
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <section id="features" className="relative py-24 overflow-hidden">
+    <section id="features" ref={sectionRef} className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
       
       <div className="cosmos-container relative z-10">
@@ -59,7 +103,8 @@ const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="feature-card glass-panel p-8 flex flex-col items-center text-center transition-all duration-300 hover:translate-y-[-5px]"
+              ref={(el) => featureRefs.current[index] = el}
+              className="glass-panel p-8 flex flex-col items-center text-center transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 mb-6">
                 {feature.icon}
@@ -69,6 +114,11 @@ const Features: React.FC = () => {
             </div>
           ))}
         </div>
+        
+        {/* Simple decorative elements */}
+        <div className="absolute top-1/4 left-5 w-6 h-6 rounded-full bg-cosmos-coral/20"></div>
+        <div className="absolute bottom-1/4 right-5 w-8 h-8 rounded-full bg-cosmos-lightCoral/20"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-4 h-4 rounded-full bg-white/10"></div>
       </div>
     </section>
   );
