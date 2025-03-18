@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Moon, Sun, Heart, Brain, CloudRain, Sparkles } from 'lucide-react';
 
 const features = [
@@ -55,23 +56,18 @@ const Features: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="feature-card glass-panel p-8 flex flex-col items-center text-center transition-all duration-1000"
-              style={{ 
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 mb-6 animate-pulse-slow">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-serif font-semibold mb-3">{feature.title}</h3>
-              <p className="text-white/70">{feature.description}</p>
-            </div>
+        <BentoGrid className="mx-auto">
+          {features.map((feature, i) => (
+            <BentoGridItem
+              key={i}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              className={`glass-panel transition-all duration-300 hover:translate-y-[-5px] 
+                ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
+            />
           ))}
-        </div>
+        </BentoGrid>
         
         {/* Static decorative elements */}
         <div className="absolute top-1/4 left-0 w-6 h-6 rounded-full bg-cosmos-coral/20"></div>
