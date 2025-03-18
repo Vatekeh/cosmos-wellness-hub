@@ -36,39 +36,55 @@ const features = [
 ];
 
 const Features: React.FC = () => {
-  const featuresRef = useRef<HTMLDivElement>(null);
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Set up refs for each feature card
+  const setFeatureRef = (el: HTMLDivElement | null, index: number) => {
+    featureRefs.current[index] = el;
+  };
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top;
+      const sectionHeight = sectionRect.height;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate how far the section is through the viewport
+      const scrollProgress = 1 - (sectionTop / (windowHeight - sectionHeight));
+      
+      // Only apply effects when the section is in view
+      if (scrollProgress > 0 && scrollProgress < 1) {
+        featureRefs.current.forEach((featureRef, index) => {
+          if (!featureRef) return;
+          
+          // Calculate different floating positions for each card based on its index
+          const floatY = Math.sin(scrollProgress * 2 + index * 0.5) * 15;
+          const floatX = Math.cos(scrollProgress * 2 + index * 0.7) * 8;
+          
+          // Apply the transform and reveal the card
+          featureRef.style.transform = `translate(${floatX}px, ${floatY}px)`;
+          featureRef.style.opacity = '1';
+        });
+      }
     };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-scale-up');
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
     
-    if (featuresRef.current) {
-      const featureCards = featuresRef.current.querySelectorAll('.feature-card');
-      featureCards.forEach((card) => {
-        observer.observe(card);
-      });
-    }
-
+    // Initial check for elements in viewport
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section id="features" className="relative py-24 overflow-hidden">
+    <section id="features" ref={sectionRef} className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-cosmos-gradient opacity-50 z-0"></div>
       
       <div className="cosmos-container relative z-10">
@@ -86,14 +102,19 @@ const Features: React.FC = () => {
           </p>
         </div>
         
-        <div ref={featuresRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="feature-card opacity-0 glass-panel p-8 flex flex-col items-center text-center"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              ref={(el) => setFeatureRef(el, index)}
+              className="feature-card opacity-0 glass-panel p-8 flex flex-col items-center text-center transition-all duration-1000"
+              style={{ 
+                animationDelay: `${index * 0.1}s`,
+                transform: 'translateY(20px)', 
+                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' 
+              }}
             >
-              <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 mb-6">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 mb-6 animate-pulse-slow">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-serif font-semibold mb-3">{feature.title}</h3>
@@ -101,6 +122,12 @@ const Features: React.FC = () => {
             </div>
           ))}
         </div>
+        
+        {/* Floating elements for added depth */}
+        <div className="absolute top-1/4 left-0 w-6 h-6 rounded-full bg-cosmos-coral/20 animate-float" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-3/4 right-1/4 w-4 h-4 rounded-full bg-cosmos-lightCoral/20 animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-8 h-8 rounded-full bg-white/10 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-12 w-10 h-10 rounded-full bg-cosmos-coral/10 animate-float" style={{ animationDelay: '3s' }}></div>
       </div>
     </section>
   );
